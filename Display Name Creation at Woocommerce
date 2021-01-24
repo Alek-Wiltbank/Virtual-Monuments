@@ -1,0 +1,16 @@
+<?php
+
+if ( isset( $_POST['memorial_first_name'] ) ) {
+	add_filter('pre_user_display_name','default_display_name');
+};
+
+
+function default_display_name($name) {
+		
+	$firstname = sanitize_text_field( $_POST['memorial_first_name'] );
+	$lastname = sanitize_text_field( $_POST['memorial_last_name'] );
+	$name = $firstname . ' ' . $lastname;
+
+	
+	return $name;
+}
