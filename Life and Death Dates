@@ -1,0 +1,47 @@
+<?php 
+
+add_action('bp_after_member_body', 'hfb_life_death_dates');
+
+function hfb_life_death_dates() {
+	
+	$bp = buddypress();
+	$user_id = bp_displayed_user_id();
+	$username = bp_core_get_user_displayname( $user_id );
+	$username = apply_filters( 'yz_user_profile_username', $username );
+	$wg_description = wp_kses_post( yz_data( 'wg_about_me_desc' ) );
+	
+	/* THIS WOULD PULL USERNAME FROM "biography" NAME FIELD which is currently disabled
+	 * $username = yz_data_hfb2( 'wg_about_me_title', $user_id );
+	 */
+	
+	?>
+	<script>
+		jQuery(function($){
+			$(document).ready(function(){
+		
+				$('.yz-name').html('<?php echo "<h2>". $username . "</h2><p>". $wg_description ."</p>"?>');
+		
+			});
+		});
+	</script>
+	<style>
+		.yz-name p { margin-top: 10px; font-size: 14px; color: #b1b1b1;}
+		.yz-header-head { top: 40%; }
+
+	</style>
+	<?php
+};
+
+function yz_data_hfb2( $key, $user_id = null ) {
+
+    do_action( 'yz_before_get_data', $key, $user_id );
+
+    // Get User ID.
+    $user_id = ! empty( $user_id ) ? $user_id : bp_get_member_user_id();
+
+    // Get user informations.
+    $user_data = get_the_author_meta( $key, $user_id );
+
+    return apply_filters( 'yz_get_user_data', $user_data, $user_id, $key );
+
+}
