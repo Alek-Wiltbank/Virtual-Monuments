@@ -1,0 +1,19 @@
+<?php
+
+add_action('bp_core_activated_user', 'bp_custom_registration_role', 10 , 3);
+function bp_custom_registration_role($user_id, $key, $user) {
+   $userdata = array();
+   $userdata['ID'] = $user_id;
+   $userdata['role'] = xprofile_get_field_data('Typ konta', $user_id);
+   
+   if ($userdata['role'] == 'Memorial') 
+      $userdata['role'] = 'memorial';
+   
+   if ($userdata['role'] == 'Family and Friends') 
+      $userdata['role'] = 'family-friends';
+
+   //only allow if user role is my_role
+   if (($userdata['role'] == "memorial") or ($userdata['role'] == "family-friends"))
+      wp_update_user($userdata);
+   
+  }
