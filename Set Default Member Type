@@ -1,0 +1,17 @@
+<?php
+
+function set_default_membertype_family_and_friends( $user_id ) {
+
+	$default_member_type = 'family-and-friends-type'; // change it with actual member type(unique name).
+	bp_set_member_type( $user_id, $default_member_type );
+}
+
+add_action( 'bp_core_activated_user', 'set_default_membertype_family_and_friends', 11 );
+
+function set_default_membertype_memorial( $user_id ) {
+
+	$default_member_type = 'memorial-type'; // change it with actual member type(unique name).
+	bp_set_member_type( $user_id, $default_member_type );
+}
+
+add_action( 'user_register', 'set_default_membertype_memorial', 11 );
