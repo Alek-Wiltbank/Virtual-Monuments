@@ -1,0 +1,55 @@
+<?php
+
+add_action('bp_before_member_activity_post_form', 'post_on_friends_wall');
+
+function post_on_friends_wall() {
+	
+	
+	
+	if ( is_user_logged_in() && !bp_is_my_profile() ) { 
+		?>
+		<script>
+		jQuery(function($){
+			$(document).ready(function(){
+				
+				<?php $bp = buddypress(); ?>
+					
+				$('#whats-new').html('What do you remember about <?php echo bp_displayed_user_fullname(); ?>?');
+				$('#whats-new').click( function() {
+					$('#whats-new').html('@<?php echo bp_displayed_user_username(); ?> ');
+					$('#whats-new').attr("id","whats-new-with-name");
+				});		
+				
+			});
+		});
+		</script>
+		<?php	
+	};
+	
+	if ( is_user_logged_in() && bp_is_my_profile() ) { 
+		
+		bp_get_template_part( 'activity/post-form' );
+		
+	};
+	
+	
+	
+	
+	$member_type = bp_get_member_type( get_current_user_id() );
+	/*
+	if ( $member_type == 'memorial-type' && !bp_is_my_profile() ) { 
+		?>
+		<script>
+		jQuery(function($){
+			$(document).ready(function(){
+				$('#yz-wall-form').hide();
+			});
+		});
+		</script>
+		
+
+<?php
+	};
+	
+*/
+};
