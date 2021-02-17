@@ -1,0 +1,81 @@
+<script>
+//    Checkout Form Changes/Styling     //
+	
+jQuery(function($){
+	$(document).ready(function(){
+		
+		$(".woocommerce-additional-fields .yzwc-box-title").html("<h3>Memorial Information</h3>");
+		$(".woocommerce-billing-fields .yzwc-box-title").html("<h3>Billing Information</h3>");
+		$(".woocommerce-additional-fields").appendTo("#customer_details .col-1").css({"padding-bottom": "20px", "border-bottom": "solid #eaeaea 1px", });
+		$("#billing_email_field").prependTo(".woocommerce-account-fields");
+		$(".woocommerce-account-fields").appendTo("#customer_details .col-1").prepend("<div><h3>Account Information</h3></div>").css({"margin-top": "20px", "margin-bottom": "50px", });
+		$(".woocommerce-billing-fields").appendTo("#customer_details .col-2");
+		$("#logy_signup_form .logy-form-actions").appendTo("#logy_signup_form");
+		
+		$(".woocommerce-input-wrapper input").prepend("<div>");
+		$(".woocommerce-input-wrapper label").append("</div>");
+		$(".woocommerce-input-wrapper").css({"display":"flex", "align-items": "center", });
+		$(".woocommerce-checkout #main-content").prepend("<div style='background-image: linear-gradient(180deg,rgba(35,31,32,0.91) 0%,rgba(35,31,32,0.92) 100%),url(http://vmonument.wpengine.com/wp-content/uploads/2020/09/banner_02.jpg); height: 300px; padding-top: 5vw; padding-bottom: 5vw;'><h1 style='font-weight: 600; font-size: 60px; text-align: center; color: #fff!important; '>Create a Memorial Account</h1></div>");
+		
+		$('#profile-details-section').prependTo('#logy_signup_form');
+	
+		$('.yz-account-img img').clone().prependTo('.yz-change-avatar-item').css({"border-radius": "200px", "margin": "30px auto", });
+		$('.yz-change-avatar-item h2').prependTo('.yz-change-avatar-item');
+		
+		$('.thwcfd-field-email label').append('<div style="font-size: 12px; border: solid 1px #d4d4d4; border-radius: 3px; padding: 5px; margin-bottom: 5px; background-color: #f7f7f7;border-left: 5px solid #92b5b5;"><p><span style="color: #92b5b5;">*</span> Each of your accounts are linked together by your email address. When you create a new Memorial / Friends &amp; Family account, make sure that you <b style="text-decoration: underline;">use the same email address</b> so that you are able to connect your accounts together.</p></div>');
+		$('#basic-details-section').append('<div style="font-size: 12px; border: solid 1px #d4d4d4; border-radius: 3px; padding: 5px; margin-bottom: 5px; background-color: #f7f7f7;border-left: 5px solid #92b5b5;"><p><span style="color: #92b5b5;">*</span> Each of your accounts are linked together by your email address. When you create a new Memorial / Friends &amp; Family account, make sure that you <b style="text-decoration: underline;">use the same email address</b> so that you are able to connect your accounts together.</p></div>');
+		
+	});
+});
+</script>
+
+
+
+<script>
+	
+jQuery(function($){
+	$(document).ready(function(){
+
+		$('.yz-quick-buttons').append('<div href="#popup-footer-test" class="yz-button-item yz-notification-btn" style="cursor: pointer;"><i class="fas fa-question-circle"></i></div>');
+		$('.yz-quick-buttons').append('<div class="yz-button-item yz-notification-btn" style="cursor: pointer;"><a href="https://virtualmonuments.net/switch-accounts/" ><i class="fas fa-user-friends"></i></a></div>');
+		
+		$('.member-logged-in .redirect-to-log-out a').prop('href', 'http://virtualmonuments.net/create-a-memorial-logged-in/');
+		
+	});
+});
+</script>
+
+
+
+
+<script> 
+jQuery(function($){
+	$(document).ready(function(){
+
+		
+		setTimeout(function() { 
+			hfbMobileAccount = $('.bp-yz-home-nav a').attr('href');
+			hfbMobileNotifications = $('.bp-notifications-nav a').attr('href');
+			hfbMobileLogout = $('.bp-logout-nav a').attr('href');
+			$('.hfb-mobile-my-account a').prop('href', hfbMobileAccount);
+			$('.hfb-mobile-notifications a').prop('href', hfbMobileNotifications);
+			$('.hfb-mobile-logout a').prop('href', hfbMobileLogout);
+			$('.not-logged-in .hfb-mobile-logout a').html('<i style="font-size:1em;" class="wpmi-icon wpmi-position-before wpmi-align-middle wpmi-size-1 fa fa-sign-in"></i>Log In');
+			$('.not-logged-in .hfb-mobile-my-account, .not-logged-in .hfb-mobile-notifications, .not-logged-in .hfb-switch-accounts').hide();
+		}, 5000);
+		
+	});
+}); 
+</script>
+
+<script>
+jQuery(function($){
+	$(document).ready(function(){
+		
+	var	hfbGoToProfileHref = $('.bp-yz-home-nav a').attr('href');
+	$('.yz-change-avatar-item').append('<div class="hfb-go-to-profile-button" style="margin-top: 30px;"><a href="" style="padding: 10px 30px; background-color: #809fae; color: #fff; text-transform: uppercase; font-size: 12px; font-weight: 600; letter-spacing: .03em; border-radius: 3px;">Go to Profile</a></div>');
+	$('.hfb-go-to-profile-button a').prop('href', hfbGoToProfileHref);
+		
+	});
+});
+</script>
